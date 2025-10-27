@@ -1,0 +1,54 @@
+timeline-component/
+├── README.md
+├── README_COMMIT_LOG.md
+├── PROJECT_SUMMARY.md
+├── package.json
+├── tsconfig.json
+├── tailwind.config.js
+├── vite.config.ts
+├── postcss.config.cjs
+├── jest.config.js
+├── index.html
+├── .gitignore
+├── .storybook/
+│   ├── main.ts
+│   └── preview.ts
+├── src/
+│   ├── index.tsx
+│   ├── setupTests.ts
+│   ├── sample-data.ts
+│   ├── styles/
+│   │   ├── globals.css
+│   │   └── animations.css
+│   ├── constants/
+│   │   └── timeline.constants.ts
+│   ├── types/
+│   │   └── timeline.types.ts
+│   ├── utils/
+│   │   ├── date.utils.ts
+│   │   ├── position.utils.ts
+│   │   ├── dependency.utils.ts
+│   │   ├── validation.utils.ts
+│   │   └── formatting.utils.ts
+│   ├── hooks/
+│   │   ├── useTimeline.ts
+│   │   ├── useDragAndDrop.ts
+│   │   ├── useZoom.ts
+│   │   └── useScrollSync.ts
+│   └── components/
+│       ├── primitives/
+│       │   ├── Button.tsx
+│       │   ├── Modal.tsx
+│       │   └── Slider.tsx
+│       └── Timeline/
+│           ├── TimelineView.tsx
+│           ├── TimelineView.types.ts
+│           ├── TimelineView.stories.tsx
+│           ├── TimelineGrid.tsx
+│           ├── TimelineRow.tsx
+│           ├── TaskBar.tsx
+│           ├── DependencyLine.tsx
+│           ├── TaskDetailSidebar.tsx
+│           └── __tests__/
+│               └── TaskBar.test.tsx
+

@@ -1,0 +1,21 @@
+
+> timeline-component-skeleton@0.1.0 storybook
+> storybook dev -p 6006
+
+@storybook/cli v7.6.20
+
+info Found existing addon "@storybook/addon-controls", skipping.
+info Found existing addon "@storybook/addon-actions", skipping.
+info Found existing addon "@storybook/addon-controls", skipping.
+info Found existing addon "@storybook/addon-actions", skipping.
+info => Starting manager..
+info => Starting preview..
+╭────────────────────────────────────────────────────╮
+│                                                    │
+│   Storybook 7.6.20 for react-vite started          │
+│   393 ms for manager and 17 s for preview          │
+│                                                    │
+│    Local:            http://localhost:6006/        │
+│    On your network:  http://10.59.116.138:6006/    │
+│                                                    │
+╰────────────────────────────────────────────────────╯
