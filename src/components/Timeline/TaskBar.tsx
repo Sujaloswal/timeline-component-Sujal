@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useMemo } from "react";
+import React, { useState, useRef } from "react";
 import { TimelineTask } from "../../types/timeline.types";
 import { truncate } from "../../utils/formatting.utils";
 
@@ -8,7 +8,6 @@ interface TaskBarProps {
   onDragStart?: (taskId: string) => void;
   onDragEnd?: () => void;
   onClick?: (task: TimelineTask) => void;
-  onResize?: (taskId: string, newStartDate?: Date, newEndDate?: Date) => void;
 }
 
 export const TaskBar: React.FC<TaskBarProps> = React.memo(({
@@ -16,8 +15,7 @@ export const TaskBar: React.FC<TaskBarProps> = React.memo(({
   position,
   onDragStart,
   onDragEnd,
-  onClick,
-  onResize
+  onClick
 }) => {
   const [isResizing, setIsResizing] = useState(false);
   const [resizeType, setResizeType] = useState<"start" | "end" | null>(null);
@@ -31,14 +29,11 @@ export const TaskBar: React.FC<TaskBarProps> = React.memo(({
     }
   };
 
-  const handlePointerDown = (e: React.PointerEvent) => {
-    if (e.button !== 0) return;
-    e.stopPropagation();
+  const handlePointerDown = () => {
     onDragStart?.(task.id);
   };
 
-  const handleResizeStart = (e: React.MouseEvent, type: "start" | "end") => {
-    e.stopPropagation();
+  const handleResizeStart = (_e: React.MouseEvent, type: "start" | "end") => {
     setIsResizing(true);
     setResizeType(type);
   };
@@ -90,13 +85,13 @@ export const TaskBar: React.FC<TaskBarProps> = React.memo(({
       aria-label={`${task.title}. From ${task.startDate.toDateString()} to ${task.endDate.toDateString()}. Progress: ${task.progress}%. Press Enter to edit.`}
       aria-describedby={`task-${task.id}-details`}
       onKeyDown={handleKeyDown}
-      onClick={(e) => {
+      onClick={() => {
         if (!isResizing) {
           onClick?.(task);
         }
       }}
       onPointerDown={handlePointerDown}
-      className="absolute rounded shadow-sm cursor-move hover:shadow-lg transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+      className="absolute rounded-lg shadow-card cursor-move hover:shadow-card-hover hover:scale-105 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 group"
       style={{
         left: `${position.left}px`,
         width: `${Math.max(position.width, 24)}px`,
@@ -107,18 +102,18 @@ export const TaskBar: React.FC<TaskBarProps> = React.memo(({
     >
       {/* Left resize handle */}
       <div
-        className="absolute left-0 top-0 bottom-0 w-1 cursor-ew-resize hover:bg-white opacity-0 hover:opacity-50 transition-opacity"
+        className="absolute left-0 top-0 bottom-0 w-2 cursor-ew-resize hover:bg-white opacity-0 group-hover:opacity-60 transition-opacity rounded-l-lg"
         onMouseDown={(e) => handleResizeStart(e, "start")}
         aria-label="Resize start date"
       />
 
       {/* Task content */}
-      <div className="flex items-center justify-between h-full px-2">
-        <span className="text-xs font-medium text-white truncate">
+      <div className="flex items-center justify-between h-full px-3">
+        <span className="text-xs font-semibold text-white truncate drop-shadow-sm">
           {truncate(task.title, 25)}
         </span>
         {!task.isMilestone && (
-          <span className="text-xs text-white opacity-75 ml-1">
+          <span className="text-xs text-white font-medium opacity-90 ml-2 bg-black bg-opacity-20 px-1.5 py-0.5 rounded">
             {task.progress}%
           </span>
         )}
@@ -127,14 +122,14 @@ export const TaskBar: React.FC<TaskBarProps> = React.memo(({
       {/* Progress bar overlay */}
       {!task.isMilestone && task.progress > 0 && (
         <div
-          className="absolute bottom-0 left-0 h-1 bg-white opacity-40 rounded-b"
+          className="absolute bottom-0 left-0 h-1.5 bg-white opacity-50 rounded-b-lg transition-all"
           style={{ width: `${task.progress}%` }}
         />
       )}
 
       {/* Right resize handle */}
       <div
-        className="absolute right-0 top-0 bottom-0 w-1 cursor-ew-resize hover:bg-white opacity-0 hover:opacity-50 transition-opacity"
+        className="absolute right-0 top-0 bottom-0 w-2 cursor-ew-resize hover:bg-white opacity-0 group-hover:opacity-60 transition-opacity rounded-r-lg"
         onMouseDown={(e) => handleResizeStart(e, "end")}
         aria-label="Resize end date"
       />

@@ -135,14 +135,14 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
   }, [tasks, rows, startDate, pixelsPerDay]);
 
   return (
-    <div className="flex flex-col h-full border rounded-lg bg-white overflow-hidden">
+    <div className="flex flex-col h-full border border-neutral-200 rounded-xl bg-white overflow-hidden shadow-card">
       {/* Timeline Container */}
       <div className="flex flex-1 overflow-hidden" ref={timelineRef}>
         {/* Left Fixed Panel */}
-        <div style={{ width: LEFT_PANEL_WIDTH }} className="flex-shrink-0 border-r border-neutral-200 bg-neutral-50">
+        <div style={{ width: LEFT_PANEL_WIDTH }} className="flex-shrink-0 border-r border-neutral-200 bg-gradient-to-b from-neutral-50 to-white">
           {/* Header in left panel */}
-          <div className="h-10 border-b border-neutral-200 bg-neutral-100 flex items-center px-3">
-            <span className="text-sm font-medium text-neutral-700">Resources</span>
+          <div className="h-10 border-b border-neutral-200 bg-gradient-to-r from-primary-50 to-primary-100 flex items-center px-3">
+            <span className="text-sm font-semibold text-primary-700">Resources</span>
           </div>
 
           {/* Row labels */}
@@ -161,14 +161,14 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
         </div>
 
         {/* Right Scrollable Timeline */}
-        <div className="flex-1 overflow-auto relative">
+        <div className="flex-1 overflow-auto relative bg-gradient-to-br from-white to-neutral-50">
           {/* Time Scale Header */}
-          <div className="sticky top-0 bg-white z-20 border-b border-neutral-200">
+          <div className="sticky top-0 bg-gradient-to-r from-primary-50 via-white to-primary-50 z-20 border-b border-neutral-200 shadow-sm">
             <div className="flex" style={{ width: timelineWidth }}>
               {timeScale.map((label, index) => (
                 <div
                   key={index}
-                  className="border-r border-neutral-200 flex items-center justify-center text-xs font-medium text-neutral-600 px-2"
+                  className="border-r border-neutral-200 flex items-center justify-center text-xs font-semibold text-neutral-700 px-2 hover:bg-primary-50 transition-colors"
                   style={{ width: label.columnWidth, minHeight: 40 }}
                 >
                   {label.label}
@@ -223,10 +223,10 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
             {/* Current Date Indicator */}
             {currentDatePosition >= 0 && currentDatePosition <= timelineWidth && (
               <div
-                className="absolute top-0 bottom-0 w-0.5 bg-red-500"
+                className="absolute top-0 bottom-0 w-0.5 bg-gradient-to-b from-red-500 to-red-400 shadow-lg"
                 style={{ left: `${currentDatePosition}px`, zIndex: 10 }}
               >
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-xs px-2 py-0.5 rounded">
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
                   Today
                 </div>
               </div>

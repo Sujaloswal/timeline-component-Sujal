@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import TimelineView from "./TimelineView";
@@ -98,40 +98,46 @@ export const InteractivePlayground: Story = {
     const [state, setState] = useState(args);
 
     return (
-      <div className="h-screen flex flex-col">
-        <div className="p-4 border-b bg-neutral-50">
-          <h3 className="text-lg font-semibold mb-2">Interactive Timeline Playground</h3>
+      <div className="h-screen flex flex-col bg-gradient-to-br from-neutral-50 to-neutral-100">
+        <div className="p-6 border-b bg-white shadow-sm">
+          <h3 className="text-xl font-bold text-neutral-900 mb-2">Interactive Timeline Playground</h3>
           <p className="text-sm text-neutral-600 mb-4">
             Click tasks to edit, drag to move, resize by edges, use keyboard to navigate
           </p>
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex gap-3 flex-wrap">
             <button
               onClick={() => setState({ ...state, viewMode: "day" as const })}
-              className={`px-3 py-1 text-sm rounded ${
-                state.viewMode === "day" ? "bg-primary-500 text-white" : "bg-white border"
+              className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all shadow-sm ${
+                state.viewMode === "day" 
+                  ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md" 
+                  : "bg-white border border-neutral-300 text-neutral-700 hover:border-primary-300 hover:bg-primary-50"
               }`}
             >
               Day View
             </button>
             <button
               onClick={() => setState({ ...state, viewMode: "week" as const })}
-              className={`px-3 py-1 text-sm rounded ${
-                state.viewMode === "week" ? "bg-primary-500 text-white" : "bg-white border"
+              className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all shadow-sm ${
+                state.viewMode === "week" 
+                  ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md" 
+                  : "bg-white border border-neutral-300 text-neutral-700 hover:border-primary-300 hover:bg-primary-50"
               }`}
             >
               Week View
             </button>
             <button
               onClick={() => setState({ ...state, viewMode: "month" as const })}
-              className={`px-3 py-1 text-sm rounded ${
-                state.viewMode === "month" ? "bg-primary-500 text-white" : "bg-white border"
+              className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all shadow-sm ${
+                state.viewMode === "month" 
+                  ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md" 
+                  : "bg-white border border-neutral-300 text-neutral-700 hover:border-primary-300 hover:bg-primary-50"
               }`}
             >
               Month View
             </button>
           </div>
         </div>
-        <div className="flex-1 overflow-hidden">
+        <div className="flex-1 overflow-hidden p-4">
           <TimelineView {...state} onTaskUpdate={action("task-updated")} onTaskMove={action("task-moved")} />
         </div>
       </div>
@@ -161,37 +167,43 @@ export const ViewModes: Story = {
     const [viewMode, setViewMode] = useState<"day" | "week" | "month">("day");
 
     return (
-      <div className="h-screen flex flex-col">
-        <div className="p-4 border-b bg-neutral-50">
-          <h3 className="text-lg font-semibold mb-2">View Modes: {viewMode}</h3>
-          <div className="flex gap-2">
+      <div className="h-screen flex flex-col bg-gradient-to-br from-neutral-50 to-neutral-100">
+        <div className="p-6 border-b bg-white shadow-sm">
+          <h3 className="text-xl font-bold text-neutral-900 mb-2">View Modes: {viewMode.charAt(0).toUpperCase() + viewMode.slice(1)}</h3>
+          <div className="flex gap-3">
             <button
               onClick={() => setViewMode("day")}
-              className={`px-3 py-1 text-sm rounded ${
-                viewMode === "day" ? "bg-primary-500 text-white" : "bg-white"
+              className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all shadow-sm ${
+                viewMode === "day" 
+                  ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md" 
+                  : "bg-white border border-neutral-300 text-neutral-700 hover:border-primary-300 hover:bg-primary-50"
               }`}
             >
               Day View (40px/unit)
             </button>
             <button
               onClick={() => setViewMode("week")}
-              className={`px-3 py-1 text-sm rounded ${
-                viewMode === "week" ? "bg-primary-500 text-white" : "bg-white"
+              className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all shadow-sm ${
+                viewMode === "week" 
+                  ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md" 
+                  : "bg-white border border-neutral-300 text-neutral-700 hover:border-primary-300 hover:bg-primary-50"
               }`}
             >
               Week View (80px/unit)
             </button>
             <button
               onClick={() => setViewMode("month")}
-              className={`px-3 py-1 text-sm rounded ${
-                viewMode === "month" ? "bg-primary-500 text-white" : "bg-white"
+              className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all shadow-sm ${
+                viewMode === "month" 
+                  ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md" 
+                  : "bg-white border border-neutral-300 text-neutral-700 hover:border-primary-300 hover:bg-primary-50"
               }`}
             >
               Month View (120px/unit)
             </button>
           </div>
         </div>
-        <div className="flex-1 overflow-hidden">
+        <div className="flex-1 overflow-hidden p-4">
           <TimelineView
             rows={sampleRows}
             tasks={sampleTasks}

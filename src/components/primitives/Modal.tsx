@@ -33,19 +33,19 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
       role="dialog"
       aria-modal="true"
       aria-label={title ?? "Modal"}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-lg shadow-modal w-full max-w-md p-6"
+        className="bg-white rounded-xl shadow-modal w-full max-w-md p-6 animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-4">
-          {title && <h2 className="text-xl font-semibold text-neutral-900">{title}</h2>}
+          {title && <h2 className="text-xl font-bold text-neutral-900">{title}</h2>}
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="text-neutral-500 hover:text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded"
+            className="text-neutral-400 hover:text-neutral-700 hover:bg-neutral-100 p-1 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 transition-all"
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

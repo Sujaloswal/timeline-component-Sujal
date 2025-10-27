@@ -64,7 +64,7 @@ export const TaskDetailSidebar: React.FC<SidebarProps> = ({
       <div className="space-y-4">
         {/* Title */}
         <div>
-          <label htmlFor="task-title" className="block text-sm font-medium text-neutral-700 mb-1">
+          <label htmlFor="task-title" className="block text-sm font-semibold text-neutral-700 mb-2">
             Title
           </label>
           <input
@@ -72,14 +72,14 @@ export const TaskDetailSidebar: React.FC<SidebarProps> = ({
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full border border-neutral-300 rounded-md px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+            className="w-full border border-neutral-300 rounded-lg px-3 py-2.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-primary-500 transition-all hover:border-neutral-400"
             aria-label="Task title"
           />
         </div>
 
         {/* Start Date */}
         <div>
-          <label htmlFor="task-start" className="block text-sm font-medium text-neutral-700 mb-1">
+          <label htmlFor="task-start" className="block text-sm font-semibold text-neutral-700 mb-2">
             Start Date
           </label>
           <input
@@ -87,14 +87,14 @@ export const TaskDetailSidebar: React.FC<SidebarProps> = ({
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            className="w-full border border-neutral-300 rounded-md px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+            className="w-full border border-neutral-300 rounded-lg px-3 py-2.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-primary-500 transition-all hover:border-neutral-400"
             aria-label="Start date"
           />
         </div>
 
         {/* End Date */}
         <div>
-          <label htmlFor="task-end" className="block text-sm font-medium text-neutral-700 mb-1">
+          <label htmlFor="task-end" className="block text-sm font-semibold text-neutral-700 mb-2">
             End Date
           </label>
           <input
@@ -102,7 +102,7 @@ export const TaskDetailSidebar: React.FC<SidebarProps> = ({
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            className="w-full border border-neutral-300 rounded-md px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+            className="w-full border border-neutral-300 rounded-lg px-3 py-2.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-primary-500 transition-all hover:border-neutral-400"
             aria-label="End date"
           />
         </div>
@@ -141,16 +141,16 @@ export const TaskDetailSidebar: React.FC<SidebarProps> = ({
         )}
 
         {/* Action Buttons */}
-        <div className="flex gap-2 pt-4 border-t border-neutral-200">
+        <div className="flex gap-3 pt-4 border-t border-neutral-200">
           <button
             onClick={handleSave}
-            className="flex-1 px-4 py-2 bg-primary-500 text-white text-sm font-medium rounded-md hover:bg-primary-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 transition-colors"
+            className="flex-1 px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 shadow-md hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 transition-all active:scale-95"
           >
             Save Changes
           </button>
           <button
             onClick={handleDelete}
-            className="px-4 py-2 bg-red-500 text-white text-sm font-medium rounded-md hover:bg-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-colors"
+            className="px-4 py-2.5 bg-gradient-to-r from-red-500 to-red-600 text-white text-sm font-semibold rounded-lg hover:from-red-600 hover:to-red-700 shadow-md hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition-all active:scale-95"
           >
             Delete
           </button>
