@@ -4,9 +4,7 @@ A fully functional, production-grade Timeline/Gantt View component built with Re
 
 ## 🌐 Live Storybook
 
-timeline-component-sujal.vercel.app
-
-> Replace with your actual Vercel URL after deployment
+https://timeline-component-sujal.vercel.app/
 
 ## 📦 Installation
 
