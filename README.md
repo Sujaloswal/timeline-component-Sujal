@@ -323,8 +323,7 @@ Built as part of a frontend developer hiring assignment.
 
 ## 📧 Contact
 
-[Your Email]
+sujaloswal190@gmail.com
 
 ---
 
-**Built with ❤️ using React, TypeScript, and Tailwind CSS**
